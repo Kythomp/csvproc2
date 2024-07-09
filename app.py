@@ -11,6 +11,21 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    team_column_name = request.form['team_column']
+    photo_column_name = request.form['photo_column']
+    custom_folder_name = request.form['custom_folder']
+
+    csv_file = request.files['csv_file']
+    folder_files = request.files.getlist('folder')
+    destination_folder_path = request.form['destination_folder']
+
+    sorted_photos_folder = os.path.join(destination_folder_path, custom_folder_name)
+    if not os.path.exists(sorted_photos_folder):
+        os.makedirs(sorted_photos_folder)
+        print(f"Created folder: {sorted_photos_folder}")
+
+
+    # Redirect to a new page after processing
     return redirect(url_for('success'))
 
 @app.route('/success')

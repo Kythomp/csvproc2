@@ -9,6 +9,12 @@
     <h1>Photo Sorter</h1>
     <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
 
+        <label for="custom_folder">Custom Folder Name:</label>
+        <input type="text" id="custom_folder" name="custom_folder" required><br>
+
+        <label for="destination_folder">Destination Folder:</label>
+        <input type="file" id="destination_folder" name="destination_folder" webkitdirectory directory required><br>
+
         <button type="submit">Submit</button>
     </form>
 </body>
