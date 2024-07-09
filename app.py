@@ -51,7 +51,12 @@ def upload():
         if folder_file.filename not in listed_photos:
             folder_file.save(os.path.join(unlisted_folder, folder_file.filename))
 
-    return redirect(url_for('index'))
+    # Redirect to a new page after processing
+    return redirect(url_for('success'))
+
+@app.route('/success')
+def success():
+    return "Files processed successfully!"
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
