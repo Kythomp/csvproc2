@@ -14,13 +14,14 @@ def upload():
     custom_folder_name = request.form['custom_folder']
     destination_folder_path = request.form['destination_folder']
     sorted_photos_folder = os.path.join(destination_folder_path, custom_folder_name)
+    
     if not os.path.exists(sorted_photos_folder):
         os.makedirs(sorted_photos_folder)
         print(f"Created folder: {sorted_photos_folder}")
 
-
     # Redirect to a new page after processing
     return redirect(url_for('success'))
+
 
 @app.route('/success')
 def success():
