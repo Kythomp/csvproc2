@@ -12,7 +12,7 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload():
     custom_folder_name = request.form['custom_folder']
-    destination_folder_path = request.form['destination_folder']
+    destination_folder_path = request.files['destination_folder'].filename
     sorted_photos_folder = os.path.join(destination_folder_path, custom_folder_name)
     
     if not os.path.exists(sorted_photos_folder):
@@ -21,6 +21,7 @@ def upload():
 
     # Redirect to a new page after processing
     return redirect(url_for('success'))
+
 
 
 @app.route('/success')
